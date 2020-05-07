@@ -1,5 +1,5 @@
 # Deep-Reinforcement-Learning-DDPG-Robotic-Arms-Continuous-Control
-Udacity Deep Reinforcement Learning Project 2 (Continuous Control)
+
 [//]: # (Image References)
 
 [image1]: https://github.com/Unity-Technologies/ml-agents/blob/master/docs/images/reacher.png "Trained Agent"
@@ -8,7 +8,7 @@ Udacity Deep Reinforcement Learning Project 2 (Continuous Control)
 
 ## Introduction
 
-For this project, 20 identical agents will be trained to control 2- double-jointed arm to move to target locations. A reward of +0.1 is provided for each step that the agent's hand is in the goal location. Thus, the goal of your agent is to maintain its position at the target location for as many time steps as possible. Shown below:
+For this project, 20 identical agents will be trained to control 2 double-jointed arms to move to target locations. A reward of +0.1 is provided for each step that the agent's hand is in the goal location. Thus, the goal of your agent is to maintain its position at the target location for as many time steps as possible. Shown below:
 
 ![Trained Agent][image1]
 
