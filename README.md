@@ -4,7 +4,7 @@
 
 [image1]: https://github.com/Unity-Technologies/ml-agents/blob/master/docs/images/reacher.png "Trained Agent"
 
-[image2]: https://3.bp.blogspot.com/-I6UKhtpt-pI/WzP8ThUgMRI/AAAAAAAADFQ/mmbmu0YtDeAGT1RJj0pDPPm_jYyyYYg0gCLcBGAs/s1600/image8.gif "Trained Agent2"
+[image2]: https://github.com/timwu64/Deep-Reinforcement-Learning-DDPG-Robotic-Arms-Continuous-Control/blob/master/images/image8.gif "Trained Agent2"
 
 ## Introduction
 
