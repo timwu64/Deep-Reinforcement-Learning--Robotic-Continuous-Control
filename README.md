@@ -8,31 +8,31 @@
 
 ## Introduction
 
-For this project, 20 identical agents will be trained to control 2 double-jointed arms to move to target locations. A reward of +0.1 is provided for each step that the agent's hand is in the goal location. Thus, the goal of your agent is to maintain its position at the target location for as many time steps as possible. Shown below:
+For this project, identical agents will be trained to control 2 double-jointed arms to move to target locations. A reward of +0.1 is provided for each step that the agent's hand is in the goal location. Thus, the goal of your agent is to maintain its position at the target location for as many time steps as possible. Shown below:
 
 ![Trained Agent][image1]
 
-In the real world, there are 20 identical copies of the agent. It has been shown that having multiple copies of the same agent sharing experience can accelerate learning.
+In the real world, there are identical copies of the agent. It has been shown that having multiple copies of the same agent sharing experience can accelerate learning.
 
 ![Trained Agent2][image2]
 
-## Enviornment
+## Project Starter Code
 
-After you have followed the instructions above, open `Continuous_Control.ipynb` (located in the p2_continuous-control/ folder in the DRLND GitHub repository) and follow the instructions to learn how to use the Python API to control the agent.
+The original Udacity repo for this project can be found [here](https://github.com/udacity/deep-reinforcement-learning/tree/master/p2_continuous-control).
 
 ## Getting Started
 ### Descriptions
 - `README.md` describe the environment, along with how to install the requirements.
 
 ### Code
-- `Navigation.ipynb` defines and train a DQN agent
-- `model.py` defines the DQN network architecture
+- `Continuous_Control.ipynb` defines and train a Deep Deterministic Policy Gradients (DDPG) agent
+- `model.py` defines the Deep Deterministic Policy Gradients (DDPG) network architecture
 
 ### Report
 - `Report.pdf` describe the learning algorithm and the details of the implementation, along with ideas for future work.
 
 ### The Trained Agent
-- `checkpoints` folder contains the weights of the all the DQN implementation (see `REPORT.md` for details)
+- `checkpoints` folder contains the weights of the all the Deep Deterministic Policy Gradients (DDPG) implementation (see `Report.pdf` for details)
 
 ### Installation
 - `python` folder contains the installation dependencies
@@ -96,7 +96,6 @@ After you have followed the instructions above, open `Continuous_Control.ipynb` 
   Spend a couple of minutes to move around and collect some yellow bananas.
 
 ### Explore the Environment and Run it
-- After you have followed the instructions above, open `Navigation.ipynb` and and follow the instructions to learn how to use the Python API to control the agent.
+- After you have followed the instructions above, open `Continuous_Control.ipynb` and and follow the instructions to learn how to use the Python API to control the agent.
 
-## Project Starter Code
-The original Udacity repo for this project can be found [here](https://github.com/udacity/deep-reinforcement-learning/tree/master/p1_navigation).
+
