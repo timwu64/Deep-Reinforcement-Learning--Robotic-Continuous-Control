@@ -32,7 +32,7 @@ The original Udacity repo for this project can be found [here](https://github.co
 - `Report.pdf` describe the learning algorithm and the details of the implementation, along with ideas for future work.
 
 ### The Trained Agent
-- `checkpoints` folder contains the weights of the all the Deep Deterministic Policy Gradients (DDPG) implementation (see `Report.pdf` for details)
+- `checkpoint_actor.pth` contains the weights for actor network, and `checkpoint_critic.pth` contains the weights for critic network for the Deep Deterministic Policy Gradients (DDPG) implementation (see `Report.pdf` for details)
 
 ### Installation
 - `python` folder contains the installation dependencies
