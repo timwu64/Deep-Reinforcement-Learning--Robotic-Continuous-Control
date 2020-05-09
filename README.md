@@ -25,7 +25,8 @@ The original Udacity repo for this project can be found [here](https://github.co
 - `README.md` describe the environment, along with how to install the requirements.
 
 ### Code
-- `Continuous_Control.ipynb` defines and train a Deep Deterministic Policy Gradients (DDPG) agent
+- `Continuous_Control.ipynb` control and train a Deep Deterministic Policy Gradients (DDPG) agent
+- `ddpg_agent.py` defines the Deep Deterministic Policy Gradients (DDPG) agent
 - `model.py` defines the Deep Deterministic Policy Gradients (DDPG) network architecture
 
 ### Report
