@@ -9,20 +9,20 @@ import torch
 import torch.nn.functional as F
 import torch.optim as optim
 
-BUFFER_SIZE = int(1e5)  # replay buffer size
-BATCH_SIZE = 128        # minibatch size
-GAMMA = 0.99            # discount factor
-TAU = 1e-3              # for soft update of target parameters
-LR_ACTOR = 1e-4         # learning rate of the actor 
-LR_CRITIC = 1e-3        # learning rate of the critic
-WEIGHT_DECAY = 0        # L2 weight decay
-
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 class Agent():
     """Interacts with and learns from the environment."""
     
-    def __init__(self, state_size, action_size, random_seed):
+    def __init__(self, num_agents, state_size, action_size, random_seed, 
+                actor_fc1_units, actor_fc2_units,
+                critic_fcs1_units, critic_fc2_units,
+                buffer_size, batch_size,
+                gamma, tau,
+                lr_actor, lr_critic, weight_decay,
+                ou_mu, ou_theta, ou_sigma,
+                update_every_t_steps, num_of_updates
+                ):
         """Initialize an Agent object.
         
         Params
@@ -30,37 +30,74 @@ class Agent():
             state_size (int): dimension of each state
             action_size (int): dimension of each action
             random_seed (int): random seed
+            buffer_size (int) : replay buffer size
+            batch_size (int) : minibatch size
+            gamma (float) : discount factor
+            tau (float) : for soft update of target parameter
+            lr_actor (float) : learning rate of the actor 
+            lr_critic (float) : learning rate of the critic 
+            weight_decay (float) : L2 weight decay
+            ou_mu (float) : OUNoise mu
+            ou_theta (float) : OUNoise theta
+            ou_sigma (float) : OUNoise sigma
+            update_every_t_steps (int): timesteps between updates
+            num_of_updates (int): num of update passes when updating
         """
+        print("[AGENT INFO] DDPG constructor initialized parameters:\n num_agents={} \n state_size={} \n action_size={} \n random_seed={} \n actor_fc1_units={} \n actor_fc2_units={} \n critic_fcs1_units={} \n critic_fc2_units={} \n buffer_size={} \n batch_size={} \n gamma={} \n tau={} \n lr_actor={} \n lr_critic={} \n weight_decay={} \n ou_mu={}\n ou_theta={}\n ou_sigma={}\n update_every_t_steps={}\n num_of_updates={}\n".format(num_agents, state_size, action_size, random_seed, actor_fc1_units, actor_fc2_units, critic_fcs1_units, critic_fc2_units, buffer_size, batch_size, gamma, tau, lr_actor, lr_critic, weight_decay, ou_mu, ou_theta, ou_sigma, update_every_t_steps, num_of_updates))
+        
+        self.num_agents = num_agents
         self.state_size = state_size
         self.action_size = action_size
         self.seed = random.seed(random_seed)
-
+        self.actor_fc1_units = actor_fc1_units
+        self.actor_fc2_units = actor_fc2_units
+        self.critic_fcs1_units = critic_fcs1_units
+        self.critic_fc2_units = critic_fc2_units
+        self.buffer_size = buffer_size
+        self.batch_size= batch_size
+        self.gamma = gamma
+        self.tau = tau
+        self.lr_actor = lr_actor
+        self.lr_critic = lr_critic
+        self.weight_decay = weight_decay
+        self.ou_mu = ou_mu
+        self.ou_theta = ou_theta
+        self.ou_sigma = ou_sigma
+        self.update_every_t_steps = update_every_t_steps
+        self.num_of_updates = num_of_updates
+        
         # Actor Network (w/ Target Network)
-        self.actor_local = Actor(state_size, action_size, random_seed).to(device)
-        self.actor_target = Actor(state_size, action_size, random_seed).to(device)
-        self.actor_optimizer = optim.Adam(self.actor_local.parameters(), lr=LR_ACTOR)
+        self.actor_local = Actor(state_size, action_size, random_seed, actor_fc1_units, actor_fc2_units).to(device)
+        self.actor_target = Actor(state_size, action_size, random_seed,actor_fc1_units, actor_fc2_units).to(device)
+        self.actor_optimizer = optim.Adam(self.actor_local.parameters(), lr=lr_actor)
 
         # Critic Network (w/ Target Network)
-        self.critic_local = Critic(state_size, action_size, random_seed).to(device)
-        self.critic_target = Critic(state_size, action_size, random_seed).to(device)
-        self.critic_optimizer = optim.Adam(self.critic_local.parameters(), lr=LR_CRITIC, weight_decay=WEIGHT_DECAY)
+        self.critic_local = Critic(state_size, action_size, random_seed, critic_fcs1_units, critic_fc2_units).to(device)
+        self.critic_target = Critic(state_size, action_size, random_seed, critic_fcs1_units, critic_fc2_units).to(device)
+        self.critic_optimizer = optim.Adam(self.critic_local.parameters(), lr=lr_critic, weight_decay=self.weight_decay)
 
         # Noise process
-        self.noise = OUNoise(action_size, random_seed)
+        self.noise = OUNoise(action_size, random_seed, mu=self.ou_mu, theta=self.ou_theta, sigma=self.ou_sigma)
 
         # Replay memory
-        self.memory = ReplayBuffer(action_size, BUFFER_SIZE, BATCH_SIZE, random_seed)
+        self.memory = ReplayBuffer(action_size, buffer_size, batch_size, random_seed)
+        
+        # Make sure target is with the same weight as the source
+        #self.hard_copy(self.actor_target, self.actor_local)
+        #self.hard_copy(self.critic_target, self.critic_local)
     
-    def step(self, state, action, reward, next_state, done):
+    def step(self, states, actions, rewards, next_states, dones, timestep):
         """Save experience in replay memory, and use random sample from buffer to learn."""
         # Save experience / reward
-        self.memory.add(state, action, reward, next_state, done)
+        for state, action, reward, next_state, done in zip(states, actions, rewards, next_states, dones):
+            self.memory.add(state, action, reward, next_state, done)
 
         # Learn, if enough samples are available in memory
-        if len(self.memory) > BATCH_SIZE:
-            experiences = self.memory.sample()
-            self.learn(experiences, GAMMA)
-
+        if len(self.memory) > self.batch_size and timestep % self.update_every_t_steps == 0:
+            for _ in range(self.num_of_updates):
+                experiences = self.memory.sample()
+                self.learn(experiences, self.gamma)
+                
     def act(self, state, add_noise=True):
         """Returns actions for given state as per current policy."""
         state = torch.from_numpy(state).float().to(device)
@@ -113,8 +150,8 @@ class Agent():
         self.actor_optimizer.step()
 
         # ----------------------- update target networks ----------------------- #
-        self.soft_update(self.critic_local, self.critic_target, TAU)
-        self.soft_update(self.actor_local, self.actor_target, TAU)                     
+        self.soft_update(self.critic_local, self.critic_target, self.tau)
+        self.soft_update(self.actor_local, self.actor_target, self.tau)                     
 
     def soft_update(self, local_model, target_model, tau):
         """Soft update model parameters.
@@ -128,7 +165,11 @@ class Agent():
         """
         for target_param, local_param in zip(target_model.parameters(), local_model.parameters()):
             target_param.data.copy_(tau*local_param.data + (1.0-tau)*target_param.data)
-
+    
+    def hard_copy(self, target, source):
+        for target_param, param in zip(target.parameters(), source.parameters()):
+            target_param.data.copy_(param.data)
+            
 class OUNoise:
     """Ornstein-Uhlenbeck process."""
 
