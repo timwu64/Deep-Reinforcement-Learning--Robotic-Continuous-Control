@@ -88,14 +88,6 @@ The original Udacity repo for this project can be found [here](https://github.co
    
    `pip install .`
 
-   `pip install torchsummary`
-
-### Play it as a human agent
-- `play` folder contains the manual game play enviornment installation dependencies
-  Follow the instructions in the Jupyter notebook `play.ipynb` in the play folder to play the game, 
-
-  Spend a couple of minutes to move around and collect some yellow bananas.
-
 ### Explore the Environment and Run it
 - After you have followed the instructions above, open `Continuous_Control.ipynb` and and follow the instructions to learn how to use the Python API to control the agent.
 
