@@ -1,4 +1,4 @@
-# Deep-Reinforcement-Learning-DDPG-Robotic-Arms-Continuous-Control
+# Deep-Reinforcement-Learning-DDPG-Continuous-Control
 
 [//]: # (Image References)
 
@@ -6,15 +6,22 @@
 
 [image2]: https://github.com/timwu64/Deep-Reinforcement-Learning-DDPG-Robotic-Arms-Continuous-Control/blob/master/images/image8.gif "Trained Agent2"
 
+[image3]: https://github.com/timwu64/Deep-Reinforcement-Learning-Robotic-Continuous-Control/blob/master/images/crawler_2.png "Crawler 2"
+
 ## Introduction
 
-For this project, identical agents will be trained to control 2 double-jointed arms to move to target locations. A reward of +0.1 is provided for each step that the agent's hand is in the goal location. Thus, the goal of your agent is to maintain its position at the target location for as many time steps as possible. Shown below:
+For this project, I will apply RL for 
+1. Robootic Arm: Use 20 identical DDPG agents to train to control 2 double-jointed arms to move to target locations. A reward of +0.1 is provided for each step that the agent's hand is in the goal location. Thus, the goal of your agent is to maintain its position at the target location for as many time steps as possible. Shown below:
 
 ![Trained Agent][image1]
 
-In the real world, there are identical copies of the agent. It has been shown that having multiple copies of the same agent sharing experience can accelerate learning.
+In the real world, there are identical copies of the agent. It has been shown that having multiple copies of the same agent sharing experience can accelerate learning. Shown below:
 
 ![Trained Agent2][image2]
+
+2. Robotic Crawler : Use Twin-Delayed DDPG agent to train a 4 Legs Crawler to walk. Shown below:
+
+![Crawler 2][image3]
 
 ## Project Starter Code
 
