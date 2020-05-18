@@ -1,10 +1,16 @@
-Deep Reinforcement Learning Nanodegree -- Project 2 "Continuous Control"
+# Deep Reinforcement Learning Nanodegree -- Project 2 "Continuous Control"
 
-Tim Wu
+//]: # (Image References)
 
-May 12th, 2020
+[image1]: https://github.com/Unity-Technologies/ml-agents/blob/master/docs/images/Reacher_Results.png "Reacher Result"
 
-**Introduction**
+[image2]: https://github.com/Unity-Technologies/ml-agents/blob/master/docs/images/td3.png "TD3"
+
+### Tim Wu
+
+### May 12th, 2020
+
+## Introduction
 
 In this project, I built the reinforcement learning (RL) to solve the
 continues action spaces
@@ -28,8 +34,7 @@ Crawler
 -   I am able to solve the Reacher environment in 273 episodes with
     average score 30.11 with Twin Delayed DDPG agent
 
-**Reacher Environment (Version 2: 20 Agents) **
-
+## Reacher Environment (Version 2: 20 Agents)
 In the Reacher Environment has ***two*** separate versions
 
 1.  The first version contains a single agent
@@ -39,7 +44,7 @@ In the Reacher Environment has ***two*** separate versions
 
 In this project, I choose the second version to solve the environment.
 
-**Code Location**
+### Code Location
 
 -   The Agent Class implemented in the (ddpg\_agent.py)
 
@@ -50,10 +55,7 @@ In this project, I choose the second version to solve the environment.
 
 -   The model weights are saved in the (Reacher\_ckpt\_path) folder
 
-**\
-**
-
-**Deep Deterministic Policy Gradient (DDPG) Implementation**
+### Deep Deterministic Policy Gradient (DDPG) Implementation**
 
 The solution is based on DDPG architecture
 
@@ -133,17 +135,14 @@ actor\_ckpt\_path = \'Reacher\_ckpt\_path/checkpoint\_actor.pth\'
 
 critic\_ckpt\_path = \'Reacher\_ckpt\_path/checkpoint\_critic.pth\'
 
-**\
-**
-
-**Results**
+### Results
 
 The best performing agent can solve the environment in 273 episodes. The
 file with the saved model weights of the best agent saved in the
 checkpoint folder Reacher\_ckpt\_path and named checkpoint\_actor.pth
 ,checkpoint\_critic.pth
 
-**The Best Agent Reacher Result:**
+### The Best Agent Reacher Result:
 
 Episode 100 (24min) Moving Average Score (over time window): 3.24
 
@@ -151,11 +150,9 @@ Episode 200 (50min) Moving Average Score (over time window): 16.59
 
 Environment solved in 273 episodes! Average Score: 30.11
 
-![A screenshot of a map Description automatically
-generated](media/image1.png){width="3.631147200349956in"
-height="2.504027777777778in"}
+![Reacher Result][image1]
 
-**Future Improvements**
+### Future Improvements
 
 1.  Extensive hyperparameter optimization, fine tune the experience
     replay feeding buffer size and update frequency
@@ -164,12 +161,10 @@ height="2.504027777777778in"}
 
 3.  Apply more advance model like Twin Delayed DDPG (TD3)
 
-**\
-**
 
-**Crawler Environment**
+## Crawler Environment
 
-**Code Location**
+### Code Location
 
 -   The Agent Class implemented in the (td\_ddpg\_agent.py)
 
@@ -179,16 +174,14 @@ height="2.504027777777778in"}
 
 -   The model weights are saved in the (Crawler\_ckpt\_path) folder
 
-**Twin Delayed Deep Deterministic Policy Gradient (TD3) Implementation**
+### Twin Delayed Deep Deterministic Policy Gradient (TD3) Implementation**
 
 The solution is based on Twin Delayed DDPG (TD3) architecture -- Actor
 Critic Network
 
 Shown blow:
 
-![A close up of a map Description automatically
-generated](media/image2.png){width="6.5in"
-height="3.2805555555555554in"}
+![TD3][image3]
 
 The Network Architecture and Parameters:
 
@@ -264,16 +257,16 @@ The file with the saved model weights of the best agent saved in the
 checkpoint folder Crawler\_ckpt\_path and named checkpoint\_actor.pth
 ,checkpoint\_critic.pth
 
-**The Best Agent Reacher Result:**
+### The Best Agent Reacher Result:
 
-**Future Improvements**
+### Future Improvements
 
 4.  Extensive hyperparameter optimization, fine tune the experience
     replay feeding buffer size and update frequency
 
 5.  Add prioritized experience replay
 
-**Reference**
+### Reference
 
 1.  [[https://ai.atamai.biz/]{.underline}](https://ai.atamai.biz/) -
     Reinforcement Learning with Pytorch course slides
