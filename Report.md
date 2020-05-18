@@ -1,6 +1,6 @@
 # Deep Reinforcement Learning Nanodegree -- Project 2 "Continuous Control"
 
-//]: # (Image References)
+[//]: # (Image References)
 
 [image1]: https://github.com/Unity-Technologies/ml-agents/blob/master/docs/images/Reacher_Results.png "Reacher Result"
 
@@ -181,7 +181,7 @@ Critic Network
 
 Shown blow:
 
-![TD3][image3]
+![TD3][image2]
 
 The Network Architecture and Parameters:
 
