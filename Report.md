@@ -2,9 +2,9 @@
 
 [//]: # (Image References)
 
-[image1]: https://github.com/Unity-Technologies/ml-agents/blob/master/docs/images/Reacher_Results.png "Reacher Result"
+[image1]: https://github.com/timwu64/Deep-Reinforcement-Learning-Robotic-Continuous-Control/blob/master/images/Reacher_Results.png "Reacher Result"
 
-[image2]: https://github.com/Unity-Technologies/ml-agents/blob/master/docs/images/td3.png "TD3"
+[image2]: https://github.com/timwu64/Deep-Reinforcement-Learning-Robotic-Continuous-Control/blob/master/images/td3.png "TD3"
 
 ### Tim Wu
 
