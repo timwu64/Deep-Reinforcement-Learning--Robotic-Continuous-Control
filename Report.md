@@ -174,7 +174,7 @@ Environment solved in 273 episodes! Average Score: 30.11
 
 -   The model weights are saved in the (Crawler\_ckpt\_path) folder
 
-### Twin Delayed Deep Deterministic Policy Gradient (TD3) Implementation**
+### Twin Delayed Deep Deterministic Policy Gradient (TD3) Implementation
 
 The solution is based on Twin Delayed DDPG (TD3) architecture -- Actor
 Critic Network
