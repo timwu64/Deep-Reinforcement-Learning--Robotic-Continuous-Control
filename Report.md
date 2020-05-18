@@ -31,11 +31,10 @@ Reacher
 
 Crawler
 
--   I am able to solve the Crawler environment in  episodes with
-    average score  with Twin Delayed DDPG agent
+-   I am able to try the Crawler environment with Twin Delayed DDPG agent and see the upper trend of average score
 
 ## Reacher Environment (Version 2: 20 Agents)
-In the Reacher Environment has ***two*** separate versions
+In the Reacher Environment has 2 separate versions
 
 1.  The first version contains a single agent
 
