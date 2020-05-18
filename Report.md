@@ -31,8 +31,8 @@ Reacher
 
 Crawler
 
--   I am able to solve the Reacher environment in 273 episodes with
-    average score 30.11 with Twin Delayed DDPG agent
+-   I am able to solve the Crawler environment in  episodes with
+    average score  with Twin Delayed DDPG agent
 
 ## Reacher Environment (Version 2: 20 Agents)
 In the Reacher Environment has ***two*** separate versions
