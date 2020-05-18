@@ -268,8 +268,7 @@ checkpoint folder Crawler\_ckpt\_path and named checkpoint\_actor.pth
 
 ### Reference
 
-1.  [[https://ai.atamai.biz/]{.underline}](https://ai.atamai.biz/) -
-    Reinforcement Learning with Pytorch course slides
+1.  <https://ai.atamai.biz/> - Reinforcement Learning with Pytorch course slides
 
 2.  <https://www.superdatascience.com/pages/drl-2-resources-page> - Deep
     Reinforcement Learning 2.0
@@ -281,5 +280,5 @@ checkpoint folder Crawler\_ckpt\_path and named checkpoint\_actor.pth
 
 4.  Scott Fujimoto, Herke van Hoof, David Meger Addressing Function
     Approximation Error in Actor-Critic Methods
-    <https://arxiv.org/pdf/1802.09477.pdf> arXiv:1802.09477v3 \[cs.AI\]
+    <https://arxiv.org/pdf/1802.09477.pdf> - arXiv:1802.09477v3 \[cs.AI\]
     22 Oct 2018
