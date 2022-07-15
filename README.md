@@ -13,13 +13,14 @@
 ## Introduction
 
 For this project, I will apply RL for 
-1. Robootic Arm: Use 20 identical DDPG agents to train to control 2 double-jointed arms to move to target locations. A reward of +0.1 is provided for each step that the agent's hand is in the goal location. Thus, the goal of your agent is to maintain its position at the target location for as many time steps as possible. Shown below:
-
+1. Robootic Arm: Use 20 identical DDPG agents to train to control 2 double-jointed arms to move to target locations. A reward of +0.1 is provided for each step that the agent's hand is in the goal location. Thus, the goal of your agent is to maintain its position at the target location for as many time steps as possible.
+Before Training:
 ![Untrained Agent][imageA]
 
-In the real world, there are identical copies of the agent. It has been shown that having multiple copies of the same agent sharing experience can accelerate learning. Shown below:
-
+After Training:
 ![Trained Agent][imageB]
+
+In the real world, there are identical copies of the agent. It has been shown that having multiple copies of the same agent sharing experience can accelerate learning. Shown below:
 
 
 ![Trained Agent2][image2]
